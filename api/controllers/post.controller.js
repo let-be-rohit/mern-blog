@@ -8,7 +8,7 @@ export const create = async (req, res, next) => {
     if(!req.body.title || !req.body.content) {
         return next(errorHandler(400, 'Please provide all required fields'));
     }
-    const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '-');
+    const slug = req.body.title.split(' ').join('-').toLowerCase().replace(/[^a-zA-Z0-9-]/g, '');
     const newPost = new Post({
         ...req.body, slug, userId: req.user.id
     });
@@ -21,7 +21,7 @@ export const create = async (req, res, next) => {
     }
 }
 
-export const getposts = async (req, res, nex) => {
+export const getposts = async (req, res, next) => {
     try {
         const startIndex = parseInt(req.query.startIndex) || 0;
         const limit = parseInt(req.query.limit) || 9;

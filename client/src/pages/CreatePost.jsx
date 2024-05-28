@@ -66,10 +66,10 @@ export default function CreatePost() {
         },
         body: JSON.stringify(formData),
       });
-      const date = await res.json();
+      const data = await res.json();
       if(!res.ok){
         setPublishError(data.message);
-        return
+        return;
       }
       if(res.ok){
         setPublishError(null);
@@ -128,7 +128,7 @@ export default function CreatePost() {
         )}
         <ReactQuill theme='snow' placeholder='Write something...' className='h-72 mb-12' required
         onChange={(value) => 
-          setFormData({ ...formData, content: e.target.value })
+          setFormData({ ...formData, content: value })
         }
         />
         <Button type='submit' gradientDuoTone='purpleToPink'>Publish</Button>
