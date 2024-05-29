@@ -1,6 +1,7 @@
 import { Button, Spinner } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import CallToAction from '../components/CallToAction';
 
 
 export default function PostPage() {
@@ -9,7 +10,6 @@ export default function PostPage() {
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
   const [recentPosts, setRecentPosts] = useState(null);
-  console.log(post);
 
   useEffect(() => {
     const fetchPost = async () => {
